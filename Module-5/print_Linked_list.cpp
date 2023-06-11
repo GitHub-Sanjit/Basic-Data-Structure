@@ -15,6 +15,8 @@ int main(){
     Node *b = new Node(30);
     Node *c = new Node(40);
     Node *d = new Node(50);
+    Node* node = new Node(5);
+    cout << node->data << endl;
 
     head->next = a;
     a->next = b;
@@ -27,12 +29,12 @@ int main(){
     // cout << head->next->next->next->data << endl;
     Node *temp = head;
     while(temp !=NULL){
-        cout << temp->data << endl;
+        // cout << temp->data << endl;
         temp = temp->next;
     }
     temp = head;
     while(temp !=NULL){
-        cout << temp->data << endl;
+        // cout << temp->data << endl;
         temp = temp->next;
     }
     return 0;
