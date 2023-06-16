@@ -49,8 +49,7 @@ void get_mid(Node *head,int count){
         }
         cout << mid->next->data << " ";
         cout << mid->data << " ";
-    }
-    
+    } 
 }
 int main()
 {
@@ -65,7 +64,6 @@ int main()
             break;
         insert_at_tail(head, tail, data);
     }
-    int cnt = 0;
     for (Node *i = head; i->next != NULL; i = i->next)
     {
         for (Node *j = i->next; j != NULL; j = j->next)
@@ -74,13 +72,10 @@ int main()
             {
                 swap(i->data, j->data);
                 
-            }
-            
+            }           
         }
-        cnt++;
     }
     int count=size(head);
     get_mid(head, count);
-
     return 0;
 }
