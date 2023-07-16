@@ -56,19 +56,43 @@ Node *input_tree()
     }
     return root;
 }
-
-int count(Node *root)
+void levelOrder(Node *root)
 {
-    if (root == NULL)
-        return 0;
-    int l = count(root->left);
-    int r = count(root->right);
-    return l + r + 1;
+    queue<Node *> q;
+    if (!root)
+        return;
+    q.push(root);
+    while (!q.empty())
+    {
+        Node *f = q.front();
+        q.pop();
+
+        cout << f->val << " ";
+
+        if (f->left)
+            q.push(f->left); // left to right
+        if (f->right)
+            q.push(f->right);
+    }
+};
+bool search(Node *root, int x){
+    if(root == NULL)
+        return false;
+    if(root->val == x)
+        return true;
+    if(x < root->val)
+        return search(root->left, x);
+    else
+        return search(root->right, x);
+    
 }
 int main()
 {
     Node *root = input_tree();
-    int c = count(root);
-    cout << c;
+    // levelOrder(root);
+    if(search(root,100))
+        cout << "Found";
+    else
+        cout << "Not Found";
     return 0;
 }

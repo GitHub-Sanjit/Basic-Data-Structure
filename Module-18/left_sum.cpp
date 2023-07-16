@@ -56,19 +56,35 @@ Node *input_tree()
     }
     return root;
 }
-
-int count(Node *root)
-{
+int sum = 0;
+int left_sum(Node *root){
+    queue<Node *> q;
     if (root == NULL)
         return 0;
-    int l = count(root->left);
-    int r = count(root->right);
-    return l + r + 1;
+    q.push(root);
+    while (!q.empty())
+    {
+        Node *f = q.front();
+        q.pop();
+
+        // cout << f->val << " ";
+        if(f->left)
+            sum += f->left->val;
+
+        if (f->left)
+            q.push(f->left); // left to right
+        if (f->right)
+            q.push(f->right);
+    }
+    return sum;
 }
+
 int main()
 {
     Node *root = input_tree();
-    int c = count(root);
-    cout << c;
+    // int c = max_height(root);
+    // cout << c - 1;
+    int s = left_sum(root);
+    cout << s << endl;
     return 0;
 }

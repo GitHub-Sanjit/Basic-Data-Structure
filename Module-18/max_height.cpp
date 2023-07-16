@@ -57,18 +57,18 @@ Node *input_tree()
     return root;
 }
 
-int count(Node *root)
+int max_height(Node *root)
 {
-    if (root == NULL)
+    if(root == NULL)
         return 0;
-    int l = count(root->left);
-    int r = count(root->right);
-    return l + r + 1;
+    int l = max_height(root->left);
+    int r = max_height(root->right);
+    return max(l, r) + 1;
 }
 int main()
 {
     Node *root = input_tree();
-    int c = count(root);
-    cout << c;
+    int c = max_height(root);
+    cout << c - 1;
     return 0;
 }
